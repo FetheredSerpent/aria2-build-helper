@@ -100,7 +100,7 @@ tar xf openssl-3.3.1.tar.gz && \
 cd openssl-3.3.1 && \
 ./Configure --cross-compile-prefix=$HOST- \
     --prefix=/usr/local/$HOST mingw && \
-make -j$(nproc) install
+make -j$(nproc) && make -j$(nproc) install
 
 ARIA2_VERSION=release-1.37.0
 ARIA2_REF=refs/heads/master
@@ -108,7 +108,7 @@ ARIA2_REF=refs/heads/master
 cd ..
 mkdir build
 git clone -b $ARIA2_VERSION --depth 1 https://github.com/aria2/aria2 && \
-mv mingw-config aria2 && cd aria2 && autoreconf -i && \
+mv mingw-config aria2 && cd aria2 && chmod +x mingw-config && autoreconf -i && \
 ./mingw-config && make -j$(nproc) && \ $HOST-strip src/aria2c.exe && \
 ./mingw-release && mv *.zip ../build
 
