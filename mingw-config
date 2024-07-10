@@ -29,6 +29,7 @@ test -z "$HOST" && HOST=i686-w64-mingw32
 test -z "$PREFIX" && PREFIX=/usr/local/$HOST
 
 ./configure \
+    --verbose
     --host=$HOST \
     --prefix=$PREFIX \
     --without-included-gettext \
