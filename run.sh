@@ -84,23 +84,26 @@ cd c-ares-1.19.1 && \
 make -j$(nproc) install
 
 cd ..
+tar xf openssl-3.3.1.tar.gz && \
+cd openssl-3.3.1 && \
+./Configure --cross-compile-prefix=$HOST- \
+    --prefix=/usr/local/$HOST mingw no-module && \
+make -j$(nproc) && make -j$(nproc) install
+
+cd ..
 tar xf libssh2-1.11.0.tar.bz2 && \
 cd libssh2-1.11.0 && \
 ./configure \
     --disable-shared \
     --enable-static \
+    --without-libgcrypt \
+    --with-openssl \
+    --without-wincng \
     --prefix=/usr/local/$HOST \
     --host=$HOST \
     --build=`dpkg-architecture -qDEB_BUILD_GNU_TYPE` \
     LIBS="-lws2_32" && \
 make -j$(nproc) install
-
-cd ..
-tar xf openssl-3.3.1.tar.gz && \
-cd openssl-3.3.1 && \
-./Configure --cross-compile-prefix=$HOST- \
-    --prefix=/usr/local/$HOST mingw && \
-make -j$(nproc) && make -j$(nproc) install
 
 ARIA2_VERSION=release-1.37.0
 ARIA2_REF=refs/heads/master
