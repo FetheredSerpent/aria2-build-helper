@@ -18,6 +18,9 @@ curl -L -O https://github.com/c-ares/c-ares/releases/download/cares-1_19_1/c-are
 curl -L -O https://libssh2.org/download/libssh2-1.11.0.tar.bz2 && \
 curl -L -O https://github.com/openssl/openssl/releases/download/openssl-3.3.1/openssl-3.3.1.tar.gz
 
+sudo mkdir -p /usr/local/$HOST
+sudo chmod 777 /usr/local/$HOST
+
 tar xf gmp-6.3.0.tar.xz && \
 cd gmp-6.3.0 && \
 ./configure \
