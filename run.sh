@@ -30,6 +30,7 @@ cd gmp-6.3.0 && \
     CFLAGS="-mtune=generic -O2 -g0" && \
 make -j$(nproc) install
 
+cd ..
 tar xf expat-2.5.0.tar.bz2 && \
 cd expat-2.5.0 && \
 ./configure \
@@ -40,6 +41,7 @@ cd expat-2.5.0 && \
     --build=`dpkg-architecture -qDEB_BUILD_GNU_TYPE` && \
 make -j$(nproc) install
 
+cd ..
 tar xf sqlite-autoconf-3430100.tar.gz && \
 cd sqlite-autoconf-3430100 && \
 ./configure \
@@ -50,6 +52,7 @@ cd sqlite-autoconf-3430100 && \
     --build=`dpkg-architecture -qDEB_BUILD_GNU_TYPE` && \
 make -j$(nproc) install
 
+cd ..
 tar xf zlib-1.3.1.tar.gz && \
 cd zlib-1.3.1 && \
 CC=$HOST-gcc \
@@ -64,6 +67,7 @@ STRIP=$HOST-strip \
     --static && \
 make -j$(nproc) install
 
+cd ..
 tar xf c-ares-1.19.1.tar.gz && \
 cd c-ares-1.19.1 && \
 ./configure \
@@ -76,6 +80,7 @@ cd c-ares-1.19.1 && \
     LIBS="-lws2_32" && \
 make -j$(nproc) install
 
+cd ..
 tar xf libssh2-1.11.0.tar.bz2 && \
 cd libssh2-1.11.0 && \
 ./configure \
@@ -87,6 +92,7 @@ cd libssh2-1.11.0 && \
     LIBS="-lws2_32" && \
 make -j$(nproc) install
 
+cd ..
 tar xf openssl-3.3.1.tar.gz && \
 cd openssl-3.3.1 && \
 ./Configure --cross-compile-prefix=$HOST- \
@@ -96,8 +102,11 @@ make -j$(nproc) install
 ARIA2_VERSION=release-1.37.0
 ARIA2_REF=refs/heads/master
 
+cd ..
 mkdir build
 git clone -b $ARIA2_VERSION --depth 1 https://github.com/aria2/aria2 && \
 mv mingw-config aria2 && cd aria2 && autoreconf -i && \
 ./mingw-config && make -j$(nproc) && \ $HOST-strip src/aria2c.exe && \
 ./mingw-release && mv *.zip ../build
+
+cd ..
