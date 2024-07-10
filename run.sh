@@ -10,7 +10,7 @@ sudo apt-get install -y --no-install-recommends \
     autopoint libcppunit-dev libxml2-dev libgcrypt20-dev lzip \
     python3-docutils
 
-curl -L -O https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz && \
+curl -L -O https://github.com/FetheredSerpent/aria2-build-helper/releases/download/deps/gmp-6.3.0.tar.xz && \
 curl -L -O https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-2.5.0.tar.bz2 && \
 curl -L -O https://www.sqlite.org/2023/sqlite-autoconf-3430100.tar.gz && \
 curl -L -O https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz && \
