@@ -33,17 +33,6 @@ cd gmp-6.3.0 && \
     CFLAGS="-mtune=generic -O2 -g0" && \
 make -j$(nproc) install
 
-ARIA2_VERSION=release-1.37.0
-ARIA2_REF=refs/heads/master
-
-cd ..
-mkdir build
-git clone -b $ARIA2_VERSION --depth 1 https://github.com/aria2/aria2 && \
-mv mingw-config aria2 && cd aria2 && chmod +x mingw-config && autoreconf -i && \
-./mingw-config && make -j$(nproc) && $HOST-strip src/aria2c.exe && \
-mkdir mingw-out && mv src/aria2c.exe mingw-out && chmod +x mingw-release && \
-./mingw-release && mv *.zip ../build
-
 cd ..
 tar xf expat-2.5.0.tar.bz2 && \
 cd expat-2.5.0 && \
@@ -115,5 +104,16 @@ cd libssh2-1.11.0 && \
     --build=`dpkg-architecture -qDEB_BUILD_GNU_TYPE` \
     LIBS="-lws2_32" && \
 make -j$(nproc) install
+
+ARIA2_VERSION=release-1.37.0
+ARIA2_REF=refs/heads/master
+
+cd ..
+mkdir build
+git clone -b $ARIA2_VERSION --depth 1 https://github.com/aria2/aria2 && \
+mv mingw-config aria2 && cd aria2 && chmod +x mingw-config && autoreconf -i && \
+./mingw-config && make -j$(nproc) && $HOST-strip src/aria2c.exe && \
+mkdir mingw-out && mv src/aria2c.exe mingw-out && chmod +x mingw-release && \
+./mingw-release && mv *.zip ../build
 
 cd ..
