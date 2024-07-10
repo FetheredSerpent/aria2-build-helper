@@ -1,11 +1,11 @@
 # Change HOST to x86_64-w64-mingw32 to build 64-bit binary
 HOST=i686-w64-mingw32
 
-apt-get update && \
+sudo apt-get update && \
 DEBIAN_FRONTEND="noninteractive" \
-apt-get install -y --no-install-recommends \
+sudo apt-get install -y --no-install-recommends \
     make binutils autoconf automake autotools-dev libtool \
-    patch ca-certificates \
+    patch ca-certificates perl \
     pkg-config git curl dpkg-dev gcc-mingw-w64 g++-mingw-w64 \
     autopoint libcppunit-dev libxml2-dev libgcrypt20-dev lzip \
     python3-docutils
