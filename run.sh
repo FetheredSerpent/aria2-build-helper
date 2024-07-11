@@ -34,7 +34,7 @@ sudo chmod 777 /usr/local/$HOST
 #     CFLAGS="-mtune=generic -O2 -g0" && \
 # make -j$(nproc) install
 
-cd ..
+# cd ..
 tar xf expat-2.5.0.tar.bz2 && \
 cd expat-2.5.0 && \
 ./configure \
