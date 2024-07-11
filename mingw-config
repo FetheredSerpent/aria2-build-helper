@@ -29,7 +29,6 @@ test -z "$HOST" && HOST=i686-w64-mingw32
 test -z "$PREFIX" && PREFIX=/usr/local/$HOST
 
 ./configure \
-#     --verbose \
     --host=$HOST \
     --prefix=$PREFIX \
     --without-included-gettext \
@@ -42,7 +41,6 @@ test -z "$PREFIX" && PREFIX=/usr/local/$HOST
     --without-libxml2 \
     --with-libexpat \
     --with-libz \
-#     --with-libgmp \
     --with-libssh2 \
     --without-libgcrypt \
     --without-libnettle \
