@@ -10,7 +10,8 @@ sudo apt-get install -y --no-install-recommends \
     autopoint libcppunit-dev libxml2-dev libgcrypt20-dev lzip \
     python3-docutils
 
-curl -L -O https://github.com/FetheredSerpent/aria2-build-helper/releases/download/deps/gmp-6.3.0.tar.xz && \
+# GMP not required if using OpenSSL
+# curl -L -O https://github.com/FetheredSerpent/aria2-build-helper/releases/download/deps/gmp-6.3.0.tar.xz && \
 curl -L -O https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-2.5.0.tar.bz2 && \
 curl -L -O https://www.sqlite.org/2023/sqlite-autoconf-3430100.tar.gz && \
 curl -L -O https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz && \
@@ -21,17 +22,17 @@ curl -L -O https://github.com/openssl/openssl/releases/download/openssl-3.3.1/op
 sudo mkdir -p /usr/local/$HOST
 sudo chmod 777 /usr/local/$HOST
 
-tar xf gmp-6.3.0.tar.xz && \
-cd gmp-6.3.0 && \
-./configure \
-    --disable-shared \
-    --enable-static \
-    --prefix=/usr/local/$HOST \
-    --host=$HOST \
-    --disable-cxx \
-    --enable-fat \
-    CFLAGS="-mtune=generic -O2 -g0" && \
-make -j$(nproc) install
+# tar xf gmp-6.3.0.tar.xz && \
+# cd gmp-6.3.0 && \
+# ./configure \
+#     --disable-shared \
+#     --enable-static \
+#     --prefix=/usr/local/$HOST \
+#     --host=$HOST \
+#     --disable-cxx \
+#     --enable-fat \
+#     CFLAGS="-mtune=generic -O2 -g0" && \
+# make -j$(nproc) install
 
 cd ..
 tar xf expat-2.5.0.tar.bz2 && \
